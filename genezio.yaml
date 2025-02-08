@@ -2,9 +2,9 @@ backend:
     functions:
         - entry: nodejs/main.js
           handler: handler
-          name: function-serverless-http
+          name: function-django
           path: .
-          type: aws
+          type: httpServer
     language:
         name: js
     path: .
@@ -13,6 +13,15 @@ backend:
             - npm install
         local:
             - npm install
+frontend:
+    path: .
+    publish: dist
+    scripts:
+        build:
+            - npm run build
+        deploy:
+            - npm install
+    subdomain: GO-APP
 name: GO-APP
 region: us-east-1
 yamlVersion: 2
